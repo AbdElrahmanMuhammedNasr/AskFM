@@ -1,5 +1,6 @@
 package com.example.demo.HomeController;
 
+import com.example.demo.HServiceIntercace.QuestionsOnlyOper;
 import com.example.demo.HServiceIntercace.QuestionsOper;
 import com.example.demo.HServiceIntercace.UserOper;
 import com.example.demo.Model.UserInfo;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,6 +23,9 @@ public class Home {
 
     @Autowired
     private QuestionsOper questionsOper;
+
+    @Autowired
+    private QuestionsOnlyOper questionsOnlyOper;
 
     @RequestMapping(value = {"/"})
     public String homePage(Model model){
@@ -41,7 +46,9 @@ public class Home {
 
     /*********************************************************************************************/
     @RequestMapping(value = {"/question"})
-    public String QuestionPage(){
+    public String QuestionPage(Model model){
+        UserInfo u  = userOper.findOneUser(new Long(1));
+        model.addAttribute("questSDetail" , questionsOnlyOper.findAllQuestions(u));
         return "question";
     }
 
@@ -67,5 +74,15 @@ public class Home {
         return "notification";
     }
 
+    /*************************************************************************************************/
+    @RequestMapping(value = {"/answerpeople/{id}"})
+    public String answerPeople(){
+        return "answerpeople";
+    }
+    @RequestMapping(value = {"/answerpeople/Delete/{id}"})
+    public String answerPeopleDelete(@PathVariable("id") Long id){
+        questionsOnlyOper.deleteOneQuestion(id);
+        return "answerpeople";
+    }
 
 }

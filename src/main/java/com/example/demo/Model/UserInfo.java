@@ -2,6 +2,8 @@ package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,7 +36,13 @@ public class UserInfo {
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Questions> userQuestion  =  new ArrayList<Questions>();
+    private List<QuestionsAndAnswer> userQuestion  =  new ArrayList<QuestionsAndAnswer>();
+
+    @OneToMany(mappedBy = "userInfo" , cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<QuestionsTable> userQues = new ArrayList<QuestionsTable>();
+
 
 
 

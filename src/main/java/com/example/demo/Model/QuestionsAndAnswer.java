@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Questions {
+public class QuestionsAndAnswer {
 
     @Id
     @GeneratedValue

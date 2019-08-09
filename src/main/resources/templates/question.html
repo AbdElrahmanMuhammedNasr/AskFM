@@ -40,11 +40,9 @@
            <!-- --------------------------------------------- start Post ----------------------------------- -->>
             <div class="row">
                <div class="container">
-                
 
                   <div class="post col-md-8 col-xs-12">
                      <article>
-                      
 
                          <section>
                          <div class="question">
@@ -55,151 +53,29 @@
                        </section>
                         <div class="clear"></div>
 
-                         <section>
-                         <div class="question">
-                           <p>Questions you’ve been asked will not be visible to other users on your profile until you choose to answer them</p>
-                           </div>
-                       </section>
-                        
-                        <div class="clear"></div>
+                         <!--   All Quesstions -->
 
-                        <section>
+                         <section th:each="qd:${questSDetail}">
 
-                         <div class="question_answer">
-                            <h3 class="h3">How Are You ? </h3>
-                              <a href="#">Account name</a>
-                              <p>About 1 hr</p>
-                              <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>
-                              <a href="answerpeople.html" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-                           
-                            </div>
-                       </section>
+                             <div class="question_answer">
+                                 <h3 class="h3" th:text="${qd.getQuestion()}">How Are You ? </h3>
+                                 <a href="#">Account name</a>
+                                 <p>About 1 hr</p>
+                                 <a th:href="@{'/answerpeople/Delete/'+${qd.getId()} }"><i class="fa fa-times delete" aria-hidden="true"></i></a>
+                                 <a th:href="@{'/answerpeople/'+${qd.getId()} }" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
 
-                      <section>
+                             </div>
+                         </section>
 
-                         <div class="question_answer">
-                            <h3 class="h3">How Are You ? </h3>
-                              <a href="#">Account name</a>
-                              <p>About 1 hr</p>
-                              <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>
-                              <a href="answerpeople.html" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-                           
-                            </div>
-                       </section>
+                         <!-- End All Questions -->
 
-                       <section>
-
-                         <div class="question_answer">
-                            <h3 class="h3">How Are You ? </h3>
-                              <a href="#">Account name</a>
-                              <p>About 1 hr</p>
-                              <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>
-                              <a href="answerpeople.html" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-                           
-                            </div>
-                       </section>
-                       <section>
-
-                         <div class="question_answer">
-                            <h3 class="h3">How Are You ? </h3>
-                              <a href="#">Account name</a>
-                              <p>About 1 hr</p>
-                              <a href="#"><i class="fa fa-times delete" aria-hidden="true"></i></a>
-                              <a href="answerpeople.html" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-                           
-                            </div>
-                       </section>
-                        
-                        
-                        <div class="clear"></div>
 
                        
                      </article>
 
                     </div>
 
-               
-                  <div class="ask col-md-3  col-md-offset-1">
-                      <h3 class="h3">Ask your friends</h3>
-                     
-                     <form>
-                        <textarea placeholder="What, when, why… ask" name="qusetion" id="" ></textarea>
-                      <input type="checkbox" name="" value=""> Ask anonymously
-                        <a href="askQuestion.html" class="btn"> ask</a>
-                     </form>
-                   </div>
 
-                   <div class="ask col-md-3  col-md-offset-1 friends">
-                      <h3 class="h3">Your friends</h3>
-                      <div class="scrollbar" id="style-13">
-                        <div class="force-overflow">
-
-                          <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                         <div class="account">
-                            <a href="#"><img src="image/person1.jpg"></a>
-                            <a href="#">
-                              <span>Abdo H. Ahmed</span>
-                            </a>
-                            <a href="askQuestion.html" class="btn"> ask</a>
-                         </div>
-                        
-                     
-                        </div>
-             
-                     </div>
-                   </div>
-            
-
-
-                 
 
                  </div>
                  
