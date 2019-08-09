@@ -29,4 +29,6 @@ public class UserOperImpl implements UserOper {
     public UserInfo getDataByUsername(String username) {
         return userData.findByUsername(username);
     }
+
+
 }

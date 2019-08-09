@@ -11,4 +11,7 @@ public interface UserOper {
     void SaveUserInfo(UserInfo userInfo);
 
     UserInfo getDataByUsername(String username);
+
+
+
 }

@@ -8,4 +8,6 @@ import java.util.List;
 public interface QuestionsOper {
 
     List <QuestionsAndAnswer> findAllQuestionUser(UserInfo  u);
+
+    QuestionsAndAnswer saveOneAnswer(QuestionsAndAnswer q);
 }

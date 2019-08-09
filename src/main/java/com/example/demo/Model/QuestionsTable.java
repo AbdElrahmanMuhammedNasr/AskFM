@@ -16,7 +16,7 @@ public class QuestionsTable {
     @GeneratedValue
     private Long Id;
 
-    private  String Question;
+    private  String question;
 
     @ManyToOne
     @JsonIgnore

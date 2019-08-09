@@ -11,4 +11,10 @@ public interface QuestionsOnlyOper  {
         List<QuestionsTable> findAllQuestions(UserInfo u);
 
         void  deleteOneQuestion(Long id);
+
+        QuestionsTable findOneQuestion(Long id);
+
+        QuestionsTable findOneQuestionByQuestion(String quest);
+
+
 }

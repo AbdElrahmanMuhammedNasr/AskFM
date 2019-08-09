@@ -22,4 +22,14 @@ public class QuestionsOnlyOperImpl implements QuestionsOnlyOper {
     public void deleteOneQuestion(Long id) {
         questionsOnly.deleteById(id);
     }
+
+    @Override
+    public QuestionsTable findOneQuestion(Long id) {
+        return questionsOnly.findById(id).get();
+    }
+
+    @Override
+    public QuestionsTable findOneQuestionByQuestion(String quest) {
+        return questionsOnly.findByQuestion(quest);
+    }
 }

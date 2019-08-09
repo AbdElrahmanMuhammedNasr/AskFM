@@ -9,4 +9,6 @@ import java.util.List;
 public interface QuestionsOnly extends JpaRepository<QuestionsTable ,Long> {
 
     List<QuestionsTable> findAllByUserInfo(UserInfo u);
+
+    QuestionsTable findByQuestion(String name);
 }

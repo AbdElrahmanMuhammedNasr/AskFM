@@ -20,5 +20,10 @@ public class QuestionsOperImpl implements QuestionsOper {
         return questionRepo.findAllByUser(u);
     }
 
+    @Override
+    public QuestionsAndAnswer saveOneAnswer(QuestionsAndAnswer q) {
+        return questionRepo.save(q);
+    }
+
 
 }
