@@ -1,0 +1,77 @@
+ <!DOCTYPE html>
+<html xmlns:th=""www.thymeleaf.org>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Welcome | Ask.fm</title>
+        <link rel="shortcut icon" href="image/logo.png">
+        <link rel="stylesheet" th:href="@{css/font-awesome.min.css}">
+        <link rel="stylesheet" th:href="@{css/normalaize.css}">
+        <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+        <link rel="stylesheet" th:href="@{css/Home.css}">
+    </head>
+
+    <body>
+
+    <!--    Start Custom Navbar  -->
+         <section class="nav-home">   
+        <div class="container">
+            <div class="row">
+               <div class="col-xs-4"><img class="logo " src="image/logonav.png"></div>
+                    
+                    <ul>
+                      <li data-class="signup" class="select-home">Sign Up</li>
+                      <li data-class="login" >Login</li>
+                    </ul>
+                  
+                   </div>
+              </div>
+            
+              <div class="clear"></div>
+        </section>
+
+    <!--    End Custom Navbar  -->
+
+     <!--   Start form  -->
+
+        <form class="signup" th:action="@{/signUp}" method="POST" th:object="${UserInfo}" >
+        <div class="color"> 
+        <div class="container2">
+            <input type="text" name="username" placeholder="username" th:field="*{username}"> <br>
+
+             <input type="password" name="pass" placeholder="password" th:field="*{Password}"> <br>
+              <input type="text" name="username" placeholder="full name" th:field="*{fullName}"><br>
+               <input type="text" name="Email" placeholder="Email" th:field="*{email}"> <br>
+                <input type="date" name="Name" th:placeholder="Data" th:field="*{dateOfBirth}">
+
+                <p>By signing up you agree to our <span> <a>Terms</a></span>  and <SPAN> <a href=""> Privacy policy</a></SPAN></p>
+
+            <!--    <a href="#" class="btn">Sign Up</a> -->
+                <input type="submit" class="btn" Value="SignUp">
+                <div class="clear"></div>
+                <p>Your name and any information posted on your profile will be visible to other users. Information you provide may be shared with third parties as explained in our <span> <a href="">Privacy policy.</a></span>  Please don’t provide any information you don’t want shared.</p>
+                </div>
+
+                </div>
+
+        </form>
+<!--   End form  -->
+<!--   Start form Login  -->
+
+        <form class="login">
+        <div class="color">
+        <div class="container2 ccc">
+            <input type="text" name="username" placeholder="username"> <br>
+            <input type="password" name="pass" placeholder="password"> <br>
+            <a th:href="@{index}" class="btn">Login</a>
+            <div class="clear"></div>
+                </div>
+        </div>
+
+        </form>        
+<!--   End form Login -->
+       <script src="js/jquery-1.12.0.min.js" ></script>
+       <script src="js/bootstrap.min.js" ></script>
+       <script src="js/custom.js" ></script>
+    </body>
+</html>
