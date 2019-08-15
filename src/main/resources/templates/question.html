@@ -62,7 +62,9 @@
                                  <a href="#">Account name</a>
                                  <p>About 1 hr</p>
                                  <a th:href="@{'/answerpeople/Delete/'+${qd.getId()} }"><i class="fa fa-times delete" aria-hidden="true"></i></a>
-                                 <a th:href="@{'/answerpeople/'+${qd.getId()} }" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+                               <!--  <a th:href="@{'/answerpeople/'+${qd.getId()} }" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a> -->
+                                 <a th:href="@{ /answerpeople/{id}(id= ${qd.id} )  }" class="answer answer_btn">Answer <i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+
 
                              </div>
                          </section>

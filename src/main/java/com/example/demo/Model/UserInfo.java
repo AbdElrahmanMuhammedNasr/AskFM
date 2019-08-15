@@ -43,6 +43,9 @@ public class UserInfo {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<QuestionsTable> userQues = new ArrayList<QuestionsTable>();
 
+    @OneToMany(mappedBy = "userInfo" ,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private  List<Friends> firends = new ArrayList<>();
 
 
 

@@ -25,5 +25,10 @@ public class QuestionsOperImpl implements QuestionsOper {
         return questionRepo.save(q);
     }
 
+    @Override
+    public Long numberOfAnswer() {
+        return questionRepo.count();
+    }
+
 
 }

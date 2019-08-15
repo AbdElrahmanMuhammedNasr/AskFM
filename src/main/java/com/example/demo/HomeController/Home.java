@@ -1,10 +1,10 @@
 package com.example.demo.HomeController;
 
+import com.example.demo.HServiceIntercace.FriendsOper;
 import com.example.demo.HServiceIntercace.QuestionsOnlyOper;
 import com.example.demo.HServiceIntercace.QuestionsOper;
 import com.example.demo.HServiceIntercace.UserOper;
 import com.example.demo.Model.QuestionsAndAnswer;
-import com.example.demo.Model.QuestionsTable;
 import com.example.demo.Model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +26,9 @@ public class Home {
 
     @Autowired
     private QuestionsOnlyOper questionsOnlyOper;
+
+    @Autowired
+    private FriendsOper friendsOper;
 
     @RequestMapping(value = {"/"})
     public String homePage(Model model){
@@ -58,13 +61,17 @@ public class Home {
     public String ProfilePage( Model model){
         UserInfo u  = userOper.findOneUser(new Long(1));
         model.addAttribute("UserDetail" , u);
+        model.addAttribute("numberOfAnswer" , questionsOper.numberOfAnswer());
+
         model.addAttribute("questDetail" , questionsOper.findAllQuestionUser(u));
         return "profile";
     }
 
     /*********************************************************************************************/
     @RequestMapping(value = {"/friends"})
-    public String FriendsPage(){
+    public String FriendsPage(Model model){
+        model.addAttribute("fri",friendsOper.findAllFriends());
+
         return "friends";
     }
 
@@ -78,24 +85,36 @@ public class Home {
     @RequestMapping(value = {"/answerpeople/{id}"})
     public String answerPeople(@PathVariable("id") Long id,Model model){
             model.addAttribute("oneQuest",questionsOnlyOper.findOneQuestion(id));
+            model.addAttribute("formAnswer",new QuestionsAndAnswer());
+
         return "answerpeople";
     }
 
-    @RequestMapping(value = {"/answerQuestion/{id}"})
-    public String answerQuest(/*@RequestParam(value = "answer") String answ , @RequestParam("question") String quest , */@PathVariable("id") Long id , HttpServletRequest request){
+    @RequestMapping(value = {"/answerQuestion/{id}/{quest}"})
+    public String answerQuest(HttpServletRequest request, @PathVariable("id") Long id , @PathVariable("quest") String quest , @ModelAttribute("answer") String answer ){
 
 
-        QuestionsTable u  = questionsOnlyOper.findOneQuestionByQuestion(request.getParameter("question"));
-        //System.out.println("the Data=============>"+u.getUserInfo());
+
+
+        String ans = "" ;
+        ans = request.getParameter("answer");
+
+        System.out.println("the Data=============>"+quest);
+        System.out.println("the Data=============>"+ans);
+
+
+
+
+        /******************* add To another table ********************/
 
         QuestionsAndAnswer q = new QuestionsAndAnswer();
-        q.setQuestion(request.getParameter("question"));
-        q.setAnswer( request.getParameter("answer"));
-      //  q.setUser(u.getUserInfo());
+        q.setQuestion(quest);
+       // q.setAnswer( request.getParameter("answer"));
         questionsOper.saveOneAnswer(q);
 
-
+        /**********************delete from questionTabe *************************/
         questionsOnlyOper.deleteOneQuestion(id);
+        /******************************************************************/
 
 
         return "redirect:/profile";

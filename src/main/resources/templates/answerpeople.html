@@ -17,9 +17,13 @@
              
                   <p  th:text="${one.getQuestion()}" name="question" disabled > </p>
 
-                  <textarea placeholder="What, when, why… ask" name="answer"  ></textarea>
+                      <textarea placeholder="What, when, why… ask" name="answer"></textarea>
+                  <a  type="submit" class="fa fa-paper-plane-o answer" th:href="@{'/answerQuestion/'+${one.getId()} + '/' +${one.getQuestion()}   }">Answer</a>
 
-                   <a  class="fa fa-paper-plane-o answer" th:href="@{'/answerQuestion/'+${one.getId()}  }">Answer</a>
+
+
+
+                  <!--  <a  class="fa fa-paper-plane-o answer" th:href="@{ /answerQuestion/{id}(id=${one.id})/{quest}(quest=one.question)  }  ">Answer2</a> -->
 
               </section>
               <!-----------------------------------------------End askPeople---------------------------------------- -->

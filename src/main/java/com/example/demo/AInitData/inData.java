@@ -1,8 +1,10 @@
 package com.example.demo.AInitData;
 
+import com.example.demo.KReposotiry.FriendsRepo;
 import com.example.demo.KReposotiry.Question;
 import com.example.demo.KReposotiry.QuestionsOnly;
 import com.example.demo.KReposotiry.UserData;
+import com.example.demo.Model.Friends;
 import com.example.demo.Model.QuestionsAndAnswer;
 import com.example.demo.Model.QuestionsTable;
 import com.example.demo.Model.UserInfo;
@@ -22,6 +24,9 @@ public class inData implements CommandLineRunner {
     @Autowired
     private QuestionsOnly questionsOnlyRepo;
 
+    @Autowired
+    private FriendsRepo friendsRepo;
+
     @Override
     public void run(String... args) throws Exception {
         try{
@@ -31,6 +36,27 @@ public class inData implements CommandLineRunner {
             u.setFullName("AbdElrahman");
             u.setEmail("www.aboo@yahoo.com");
             u.setDateOfBirth("8/8/1998");
+
+            Friends f1 = new Friends();
+            f1.setUsername("nasr");
+            f1.setEmail("@nasr");
+            f1.setUserInfo(u);
+
+            Friends f2 = new Friends();
+            f2.setUsername("Mostsfa");
+            f2.setEmail("@mostafa");
+            f2.setUserInfo(u);
+
+            Friends f3 = new Friends();
+            f3.setUsername("hassan");
+            f3.setEmail("@hassan");
+            f3.setUserInfo(u);
+
+            Friends f4 = new Friends();
+            f4.setUsername("tarek");
+            f4.setEmail("@tarek");
+            f4.setUserInfo(u);
+
 
 
             QuestionsAndAnswer q1 = new QuestionsAndAnswer();
@@ -76,6 +102,11 @@ public class inData implements CommandLineRunner {
                 questionsOnlyRepo.save(qT2);
                 questionsOnlyRepo.save(qT3);
                 questionsOnlyRepo.save(qT4);
+
+                friendsRepo.save(f1);
+                friendsRepo.save(f2);
+                friendsRepo.save(f3);
+                friendsRepo.save(f4);
 
 
 
