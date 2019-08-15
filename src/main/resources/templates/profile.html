@@ -51,7 +51,7 @@
 
                                   <h4 class="username" th:text="${user.getUsername()}"> <span class="online"> No one</span></h4>
                                   <p class="email" th:text= " '@'+ ${user.getEmail()} "></p>
-                                  <p class="followers"><span>Followers: <strong>1150</strong></span></p>
+                                  <p class="followers"><span>Followers: <strong th:text="${user.getFollower()}">0000</strong></span></p>
                                   <p class="message"><span><i class="fa fa-envelope-o" aria-hidden="true"></i> </span></p>
 
                             </div>
